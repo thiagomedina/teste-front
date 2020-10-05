@@ -39,6 +39,10 @@ export const AnimationContainer = styled.div`
 
   animation: ${apperFromLeft} 1s;
 
+  > img {
+    height: 50px;
+  }
+
   form {
     margin: 80px 0;
     width: 340px;
@@ -71,9 +75,7 @@ export const AnimationContainer = styled.div`
     display: flex;
     align-items: center;
 
-    svg {
-      margin-right: 16px;
-    }
+    
 
     &:hover {
       color:'#ff9000';
