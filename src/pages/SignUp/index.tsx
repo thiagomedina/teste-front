@@ -44,7 +44,7 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
          
-        await api.post('/usuarios', { id: uuid(), user:{...data, token:uuid()}});
+        await api.post('/usuarios', {...data, id:uuid(), token: uuid()});
 
         history.push('/');
 

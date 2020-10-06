@@ -42,10 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
       email,
       password,
     });
-   
-    const teste = await api.get('usuarios')
-    
-    console.log(teste.data);
+       
 
     const { token, user } = response.data;
 
