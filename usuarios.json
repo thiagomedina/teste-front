@@ -1,27 +1,28 @@
 {
   "usuarios": [
     {
-      "nome": "foo bar",
-      "cpf": "213.123.123-45",
-      "email": "foo_bar@email.com",
-      "endereco": {
-        "cep": "13454000",
-        "rua": "rua talvez",
-        "numero": "785",
-        "bairro": "bairro azul",
-        "cidade": "cidade eterna"
+      "user": {
+        "id": "1",
+        "nome": "foo bar",
+        "cpf": "213.123.123-45",
+        "email": "foo_bar@email.com",
+        "endereco": {
+          "cep": "13454000",
+          "rua": "rua talvez",
+          "numero": "785",
+          "bairro": "bairro azul",
+          "cidade": "cidade eterna"
+        },
+        "token": ""
       }
     },
     {
-      "nome": "foo bar",
-      "cpf": "213.123.123-45",
-      "email": "foo_bar@email.com",
-      "endereco": {
-        "cep": "13454000",
-        "rua": "rua talvez",
-        "numero": "785",
-        "bairro": "bairro azul",
-        "cidade": "cidade eterna"
+      "id": "7d8d1d15-e843-4cc1-b4ce-7acdf86dd6b3",
+      "user": {
+        "name": "ss",
+        "email": "contato@thiagomedina.me",
+        "password": "1234",
+        "token": "514e2f5b-1994-4087-831c-745352cf4355"
       }
     }
   ]

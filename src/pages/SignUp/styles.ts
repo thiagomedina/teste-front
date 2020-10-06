@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
+import { shade } from 'polished';
 
-import signInBackgrondImg from '../../assets/sign-in-background.png';
+import signUpBackgrondImg from '../../assets/sign-background.png';
 
 export const Container = styled.div`
   height: 100vh;
@@ -19,10 +20,10 @@ export const Content = styled.div`
   max-width: 700px;
 `;
 
-export const apperFromLeft = keyframes`
+export const apperFromRight = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(50px);
   }
   
   to {
@@ -37,11 +38,7 @@ export const AnimationContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  animation: ${apperFromLeft} 1s;
-
-  > img {
-    height: 50px;
-  }
+  animation: ${apperFromRight} 1s;
 
   form {
     margin: 80px 0;
@@ -60,7 +57,7 @@ export const AnimationContainer = styled.div`
       transition: color 0.2s;
 
       &:hover {
-        color: '#f4ede8';
+        color: ${shade(0.2, '#f4ede8')};
       }
     }
   }
@@ -75,16 +72,18 @@ export const AnimationContainer = styled.div`
     display: flex;
     align-items: center;
 
-    
+    svg {
+      margin-right: 16px;
+    }
 
     &:hover {
-      color:'#ff9000';
+      color: ${shade(0.2, '#ff9000')};
     }
   }
 `;
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${signInBackgrondImg}) no-repeat center;
+  background: url(${signUpBackgrondImg}) no-repeat center;
   background-size: cover;
 `;

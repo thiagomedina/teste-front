@@ -7,8 +7,9 @@ interface ContainerProps {
   isFilled: boolean;
   isErrored: boolean;
 }
-// 232129
+
 export const Container = styled.div<ContainerProps>`
+  // background: #232129;
   background: #fff;
   border-radius: 10px;
   padding: 16px;
@@ -47,8 +48,9 @@ export const Container = styled.div<ContainerProps>`
     flex: 1;
     background: transparent;
     border: 0;
-    // color: #f4ede8;
     color: #232129;
+    
+
     &::placeholder {
       color: #666360;
     }
