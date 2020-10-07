@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -26,11 +26,14 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const history = useHistory();
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
       try {
         formRef.current?.setErrors({});
+        setLoading(true)
+
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório'),
@@ -66,6 +69,8 @@ const SignUp: React.FC = () => {
           title: 'Erro no cadastro',
           description: 'Ocorreu um erro ao fazer o cadastro, tente novamente.',
         });
+      }finally{
+        setLoading(false)
       }
     },
     [addToast, history],
@@ -90,7 +95,7 @@ const SignUp: React.FC = () => {
               placeholder="Senha"
             />
 
-            <Button type="submit"> Cadastrar </Button>
+            <Button loading={loading} type="submit"> Cadastrar </Button>
           </Form>
 
           <Link to="/">

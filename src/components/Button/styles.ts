@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import load from '../../assets/load.svg';
 
 export const Container = styled.button`
   background: #ff9000;
@@ -14,4 +15,9 @@ export const Container = styled.button`
   &:hover {
     background: #d17702;
   }
+`;
+export const Loading = styled.img`
+    height:40px;
+    margin-top: 24px;
+
 `;
