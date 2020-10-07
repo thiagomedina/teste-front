@@ -29,22 +29,11 @@
       "token": ""
     },
     {
-      "email": "contato@thiagomedina.me",
+      "id": "4b6c5683-512f-4c41-b9ea-32931e695f75",
+      "name": "nome",
+      "email": "nome@email.com",
       "password": "1234",
-      "id": "e3gcwl8"
-    },
-    {
-      "name": "thiago medina de oliveira",
-      "email": "thiagomedina.tmd@gmail.com",
-      "password": "1234",
-      "id": "64ad5abe-a5e7-47db-b717-0908c783e814"
-    },
-    {
-      "name": "hshdush",
-      "email": "wudwud@hdfd.com",
-      "password": "1234",
-      "id": "3b874170-85c8-4322-b959-7afc71df0866",
-      "token": "32dc3630-2d75-415c-a5cd-fbd0f417a527"
+      "token": "e3b5b50c-ad67-4f7f-b58d-3ee2cdd42937"
     }
   ]
 }

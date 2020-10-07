@@ -5,6 +5,16 @@ interface User {
   id: string;
   name: string;
   avatar_url: string;
+  cpf: string;
+  email: string;
+  password?: string;
+  endereco: {
+    cep: string;
+    rua: string;
+    numero: string;
+    bairro: string;
+    cidade: string;
+  };
 }
 
 interface AuthState {
@@ -38,17 +48,19 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post("usuarios", {
-      email,
-      password,
-    });
-       
+    const response = await api.get("usuarios");
+    const user = response.data.filter(
+      (obj: User) => obj.email === email && obj.password === password
+    );
+    const { token } = user;
 
-    const { token, user } = response.data;
+
+    if (user.length === 0) {
+      throw new Error();
+    }
 
     // localStorage.setItem('@GoBarber:token', token);
     // localStorage.setItem('@GoBarber:user', JSON.stringify(user));
-
     setData({ token, user });
   }, []);
 

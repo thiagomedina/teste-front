@@ -1,11 +1,9 @@
 import styled, { keyframes } from 'styled-components';
-import { shade } from 'polished';
 
 import signInBackgrondImg from '../../assets/sign-background.png';
 
 export const Container = styled.div`
   height: 100vh;
-
   display: flex;
   align-items: stretch;
 `;
@@ -48,18 +46,6 @@ export const AnimationContainer = styled.div`
     h1 {
       margin-bottom: 24px;
     }
-
-    a {
-      color: #f4ede8;
-      display: block;
-      margin-top: 24px;
-      text-decoration: none;
-      transition: color 0.2s;
-
-      &:hover {
-        color: ${shade(0.2, '#f4ede8')};
-      }
-    }
   }
 
   > a {
@@ -77,7 +63,7 @@ export const AnimationContainer = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, '#ff9000')};
+      color: #d17702;
     }
   }
 `;

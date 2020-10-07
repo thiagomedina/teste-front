@@ -43,15 +43,15 @@ const SignUp: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-         
-        await api.post('/usuarios', {...data, id:uuid(), token: uuid()});
+         // the token and id should be return from backend
+        await api.post('/usuarios', {id:uuid(),...data,token: uuid() });
 
         history.push('/');
 
         addToast({
           type: 'success',
           title: 'Cadastro realizado!',
-          description: 'Você já pode fazer seu logon no GoBarber!',
+          description: 'Você já pode fazer seu login no 2SEED!',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -76,7 +76,7 @@ const SignUp: React.FC = () => {
       <Background />
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="GoBarber" />
+          <img src={logoImg} alt="2seed" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu cadastro</h1>
@@ -95,7 +95,7 @@ const SignUp: React.FC = () => {
 
           <Link to="/">
             <FiArrowLeft />
-            Voltar para logon
+            Voltar para login
           </Link>
         </AnimationContainer>
       </Content>
