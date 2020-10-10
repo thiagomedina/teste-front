@@ -1,19 +1,18 @@
 import React, { createContext, useCallback, useState, useContext } from "react";
-import api from "../services/api";
+import { api} from '../services/api';
 
 interface User {
   id: string;
   name: string;
-  avatar_url: string;
   cpf: string;
   email: string;
   password?: string;
-  endereco: {
-    cep: string;
-    rua: string;
-    numero: string;
-    bairro: string;
-    cidade: string;
+  address: {
+    zip: string;
+    street: string;
+    number: string;
+    district: string;
+    city: string;
   };
 }
 
@@ -48,7 +47,7 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.get("usuarios");
+    const response = await api.get("/users");
     const user = response.data.filter(
       (obj: User) => obj.email === email && obj.password === password
     );
@@ -59,14 +58,14 @@ const AuthProvider: React.FC = ({ children }) => {
       throw new Error();
     }
 
-    // localStorage.setItem('@GoBarber:token', token);
-    // localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+    localStorage.setItem('@GoBarber:token', token);
+    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
     setData({ token, user });
   }, []);
 
   const signOut = useCallback(() => {
-    // localStorage.removeItem('@GoBarber:token');
-    // localStorage.removeItem('@GoBarber:user');
+    localStorage.removeItem('@GoBarber:token');
+    localStorage.removeItem('@GoBarber:user');
 
     setData({} as AuthState);
   }, []);

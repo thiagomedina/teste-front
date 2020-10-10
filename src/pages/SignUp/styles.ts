@@ -41,9 +41,10 @@ export const AnimationContainer = styled.div`
   animation: ${apperFromRight} 1s;
 
   form {
-    margin: 80px 0;
+    margin: 40px 0;
     width: 340px;
     text-align: center;
+    
 
     h1 {
       margin-bottom: 24px;
@@ -65,16 +66,16 @@ export const AnimationContainer = styled.div`
   > a {
     color: #ff9000;
     display: block;
-    margin-top: 24px;
+    margin-top: 16px;
     text-decoration: none;
     transition: color 0.2s;
 
     display: flex;
     align-items: center;
-
+/* 
     svg {
       margin-right: 16px;
-    }
+    } */
 
     &:hover {
       color: ${shade(0.2, '#ff9000')};

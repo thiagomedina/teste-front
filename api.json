@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "foo bar",
+      "cpf": "213.123.123-45",
+      "email": "foo_bar@email.com",
+      "address": {
+        "zip": "13454000",
+        "street": "rua talvez",
+        "numero": "785",
+        "bairro": "bairro azul",
+        "cidade": "cidade eterna"
+      },
+      "token": ""
+    },  
+    {
+      "id": "ab6095f3-83e4-415c-8259-61a92f6cfae0",
+      "name": "nome",
+      "email": "nome3@email.com",
+      "cpf": "12345678911",
+      "city": "rio",
+      "password": "1234",
+      "token": "70eba3c8-3439-4305-8a6e-47fc1e4f6617"
+    }
+  ]
+}
