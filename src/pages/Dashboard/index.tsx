@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import DayPicker, { DayModifiers } from "react-day-picker";
 import "react-day-picker/lib/style.css";
-import {api} from "../../services/api";
+import { api } from "../../services/api";
 
 import {
   Container,
@@ -10,19 +10,20 @@ import {
   Content,
   Grid,
   UserCard,
+  Table,
+  Buttons,
 } from "./styles";
 
 import logoImg from "../../assets/logo.png";
-import { FiClock, FiPower } from "react-icons/fi";
+import { FiTrash2, FiPower, FiEdit2 } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 
-
-interface IUser{
-  id:string,
-  name:string,
-  email:string,
-  cpf: number,
-  city: string
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  cpf: number;
+  city: string;
 }
 const Dashboard: React.FC = () => {
   const { signOut } = useAuth();
@@ -41,6 +42,11 @@ const Dashboard: React.FC = () => {
     handleApiRequest();
   }, [handleApiRequest]);
 
+  const handleDeleteItem = useCallback(async (e) => {
+    await api.delete(`users/${e}`);
+    handleApiRequest();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -56,20 +62,32 @@ const Dashboard: React.FC = () => {
       <Content>
         <Grid>
           <h1>Usuários Cadastrados</h1>
-          {users
-            ? users.map((e) => (
-                <UserCard key={e.id}>
-                  <div>
-                    <strong>{e.name}</strong>  
-                    <strong>{e.email}</strong>          
-                    <strong>{e.cpf}</strong>  
-                    <span>
-                      <FiClock />
-                    </span>
-                  </div>
-                </UserCard>
-              ))
-            : "nenhum encontrado"}
+          {users ? (
+            users.map((e) => (
+              <UserCard key={e.id}>
+                <div>
+                  <Table>
+                    <strong>Nome: {e.name}</strong>
+                    <strong>Email: {e.email}</strong>
+                    <strong>CPF: {e.cpf}</strong>
+                  </Table>
+                  <Buttons>
+                    <button type="button">
+                      <FiEdit2 />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteItem(e.id)}
+                      type="button"
+                    >
+                      <FiTrash2 />
+                    </button>
+                  </Buttons>
+                </div>
+              </UserCard>
+            ))
+          ) : (
+            <h3>Nenhum encontrado</h3>
+          )}
         </Grid>
       </Content>
     </Container>

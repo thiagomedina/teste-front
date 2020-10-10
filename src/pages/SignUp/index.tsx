@@ -54,6 +54,7 @@ const SignUp: React.FC = () => {
           name: data.name,
           cpf: data.cpf,
           email: data.email,
+          password: data.password,
           address: {
             city: data.city,
           },

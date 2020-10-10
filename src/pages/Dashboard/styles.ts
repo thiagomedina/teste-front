@@ -65,6 +65,14 @@ p{
 
 `;
 
+export const Table = styled.div`
+
+span {
+  background-color: red;
+}
+
+
+`;
 
 export const UserCard = styled.div`
 
@@ -97,22 +105,29 @@ div{
     margin-left:24px;
 
   }
-  span{
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    color: #999591;
+  button{
+     margin-left: 50px;
+     background: transparent;
+     border:0;
+     height: 30px;
+   
 
     svg{
       color: #ff9000;
       margin-right: 8px;
+      width:20px;
+     height: 20px;
+
+      
     }
   }
 }
 
-
 `;
 
+export const Buttons = styled.div`
+margin-left:auto;
+`;
 
 
 

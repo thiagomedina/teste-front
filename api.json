@@ -1,27 +1,26 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "foo bar",
-      "cpf": "213.123.123-45",
-      "email": "foo_bar@email.com",
-      "address": {
-        "zip": "13454000",
-        "street": "rua talvez",
-        "numero": "785",
-        "bairro": "bairro azul",
-        "cidade": "cidade eterna"
-      },
-      "token": ""
-    },  
-    {
-      "id": "ab6095f3-83e4-415c-8259-61a92f6cfae0",
+      "id": "8f00c6b5-f6a0-4aef-96a2-5bed66bc3da",
       "name": "nome",
-      "email": "nome3@email.com",
       "cpf": "12345678911",
-      "city": "rio",
+      "email": "nome@email.com",
       "password": "1234",
-      "token": "70eba3c8-3439-4305-8a6e-47fc1e4f6617"
+      "address": {
+        "city": "rio"
+      },
+      "token": "fd08bb1d-8ded-42f8-aa7d-b5f09a58def"
+    },
+    {
+      "id": "8f00c6b5-fa0-4aef-96a2-5bed667bc3da",
+      "name": "nome",
+      "cpf": "12345678911",
+      "email": "nome@email.com",
+      "password": "1234",
+      "address": {
+        "city": "rio"
+      },
+      "token": "fd08bb1d-8ed-42f8-aa7d-b5f09a568def"
     }
   ]
 }
