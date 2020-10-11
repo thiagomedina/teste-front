@@ -12,12 +12,10 @@ const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
       <Loading src={svg} />
     ) : (
       <Container type="button" {...rest}>
-        {loading ? "nul" : children}
+        {loading ? null : children}
       </Container>
     )}
-    {/* <Container type="button" {...rest}>
-      {loading ? "nul" : children}
-    </Container> */}
+ 
   </>
 );
 

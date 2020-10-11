@@ -12,9 +12,11 @@ import {
   Table,
   Buttons,
   Links,
+  Loading
 } from "./styles";
 
 import logoImg from "../../assets/logo.png";
+import svg from '../../assets/load.svg'
 import { FiTrash2, FiPower, FiEdit2 } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 
@@ -35,15 +37,17 @@ interface IUser {
 const Dashboard: React.FC = () => {
   const { signOut } = useAuth();
   const [users, setUsers] = useState<IUser[]>([]);
-  const history = useHistory();
-
+  const [loading, setLoading] = useState(false)
 
   const handleApiRequest = useCallback(async () => {
     try {
+      setLoading(true)
       const { data } = await api.get("/users");
       setUsers(data);
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   }, []);
 
@@ -55,7 +59,6 @@ const Dashboard: React.FC = () => {
     await api.delete(`users/${e}`);
     handleApiRequest();
   }, []);
-
 
   return (
     <Container>
@@ -77,7 +80,11 @@ const Dashboard: React.FC = () => {
       <Content>
         <Grid>
           <h1>Usuários Cadastrados</h1>
-          {users ? (
+
+
+          {loading ? <Loading ><img src={svg}/></Loading> : 
+          
+           users ? (
             users.map((e) => (
               <UserCard key={e.id}>
                 <div>
@@ -89,7 +96,9 @@ const Dashboard: React.FC = () => {
                   </Table>
                   <Buttons>
                     <button type="button">
-                      <Link to={`/dashboard/form-user/${e.id}`}><FiEdit2 /></Link>
+                      <Link to={`/dashboard/form-user/${e.id}`}>
+                        <FiEdit2 />
+                      </Link>
                     </button>
                     <button
                       onClick={() => handleDeleteItem(e.id)}
@@ -104,6 +113,8 @@ const Dashboard: React.FC = () => {
           ) : (
             <h3>Nenhum encontrado</h3>
           )}
+          
+          
         </Grid>
       </Content>
     </Container>

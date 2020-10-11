@@ -43,7 +43,7 @@ const FormUser: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -57,7 +57,7 @@ const FormUser: React.FC = () => {
   const handleSubmit = useCallback(async (data: inputValuesDTO) => {
     try {
       formRef.current?.setErrors({});
-      setLoading(true)
+      setLoading(true);
 
       const schema = Yup.object().shape({
         email: Yup.string()
@@ -91,7 +91,7 @@ const FormUser: React.FC = () => {
             city: data.city,
           },
         });
-      }else{
+      } else {
         await api.post("/users", {
           id: uuid(),
           name: data.name,
@@ -104,10 +104,9 @@ const FormUser: React.FC = () => {
             district: data.district,
             city: data.city,
           },
-          token: uuid()
+          token: uuid(),
         });
       }
-     
 
       addToast({
         type: "success",
@@ -128,8 +127,8 @@ const FormUser: React.FC = () => {
           "Ocorreu um erro ao cadastrar o usuário, verifique servidor",
         title: "Erro no servidor",
       });
-    }finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -149,6 +148,25 @@ const FormUser: React.FC = () => {
   useEffect(() => {
     if (id) {
       filterApi();
+    }
+  }, []);
+
+  const handleChange = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const formattedValue = value
+      .replace(/\D/g, "")
+      .replace(/(\d{5})(\d)/, "$1-$2")
+      .replace(/(-\d{3})\d+?$/, "$1");
+
+    console.log(formattedValue);
+    setZip(formattedValue);
+
+    if (value.length == 8) {
+      const { data } = await apiViaCep.get(`${formattedValue}/json`);
+      console.log(data);
+      setStreet(data.logradouro);
+      setDistrict(data.bairro);
+      setCity(data.localidade);
     }
   }, []);
 
@@ -199,6 +217,7 @@ const FormUser: React.FC = () => {
             <legend>Endereço</legend>
 
             <Input
+              onChange={(e) => handleChange(e)}
               type="text"
               placeholder="cep"
               name="zip"
@@ -228,7 +247,9 @@ const FormUser: React.FC = () => {
               name="city"
               defaultValue={city}
             />
-            <Button loading={loading} type="submit">Salvar</Button>
+            <Button loading={loading} type="submit">
+              Salvar
+            </Button>
           </fieldset>
         </Form>
       </Container>

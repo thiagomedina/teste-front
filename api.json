@@ -1,27 +1,16 @@
 {
   "users": [
     {
-      "id": "c993ba10-9914-4500-940b-199d12268e84",
-      "name": "thiago medina",
-      "cpf": "60965960374",
-      "email": "thiagomedina.tmd@gmail.com",
-      "password": "1234",
+      "id": "8f4a532a-3c21-40b7-8bde-4ca937389fb9",
+      "name": "nome",
+      "cpf": "12345678911",
+      "email": "email@email.com",
       "address": {
+        "zip": "22795025",
+        "street": "Rua Tres-W",
+        "number": "19",
+        "district": "Recreio dos Bandeirantes",
         "city": "Rio de Janeiro"
-      },
-      "token": "a1f5840b-3d92-4476-836f-1da4846315e4"
-    },
-    {
-      "id": "226d35c1-c2dd-4878-a9bb-27061b047a43",
-      "name": "nom2",
-      "cpf": "111111111111111111",
-      "email": "ddd@email.com",
-      "address": {
-        "zip": "111111111111111111111",
-        "street": "ssssssssssss",
-        "number": "11111111",
-        "district": "ssssss",
-        "city": "ssssssssss"
       }
     }
   ]

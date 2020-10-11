@@ -135,5 +135,12 @@ export const Buttons = styled.div`
 margin-left:auto;
 `;
 
+export const Loading = styled.div`
+    height:20px;
+    margin-top: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 
+`;
 
