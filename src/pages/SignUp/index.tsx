@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Link, useHistory } from "react-router-dom";
 import { uuid } from "uuidv4";
 
-import { api, apiViaCep } from "../../services/api";
+import { api } from "../../services/api";
 import { useToast } from "../../hooks/toast";
 import getValidationErrors from "../../utils/getValidationErrors";
 import logoImg from "../../assets/logo.png";

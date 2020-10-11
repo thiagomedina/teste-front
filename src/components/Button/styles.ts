@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import load from '../../assets/load.svg';
 
 export const Container = styled.button`
   background: #ff9000;
