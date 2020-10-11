@@ -3,14 +3,14 @@
 **Clone o respositório**
 
 ```bash
-$ git clone git@github.com:thiagomedina/teste-front.git r
+$ git clone git@github.com:thiagomedina/teste-front.git 
 ```
 
 **Edite o arquivo .env**
 
-**Iniciando o server api.json**
+**Iniciando o server**
 ```bash
-json-server --watch db.json --delay 1500 --port 3333
+yarn json-server --watch api.json --delay 1500 --port 3333
 ```
 
 ```bash
