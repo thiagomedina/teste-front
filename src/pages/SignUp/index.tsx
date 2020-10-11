@@ -18,9 +18,9 @@ import { Container, Content, AnimationContainer, Background } from "./styles";
 interface SignUpFormData {
   name: string;
   email: string;
-  cpf: number;
-  city: string;
+  cpf: string;
   password: string;
+  city: string;
 }
 
 const SignUp: React.FC = () => {

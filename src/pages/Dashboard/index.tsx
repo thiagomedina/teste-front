@@ -1,7 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
-import DayPicker, { DayModifiers } from "react-day-picker";
-import "react-day-picker/lib/style.css";
 import { api } from "../../services/api";
+import { Link, useHistory } from "react-router-dom";
 
 import {
   Container,
@@ -12,6 +11,7 @@ import {
   UserCard,
   Table,
   Buttons,
+  Links,
 } from "./styles";
 
 import logoImg from "../../assets/logo.png";
@@ -21,13 +21,22 @@ import { useAuth } from "../../hooks/auth";
 interface IUser {
   id: string;
   name: string;
+  cpf: string;
   email: string;
-  cpf: number;
-  city: string;
+  password?: string;
+  address: {
+    zip: string;
+    street: string;
+    number: string;
+    district: string;
+    city: string;
+  };
 }
 const Dashboard: React.FC = () => {
   const { signOut } = useAuth();
   const [users, setUsers] = useState<IUser[]>([]);
+  const history = useHistory();
+
 
   const handleApiRequest = useCallback(async () => {
     try {
@@ -47,12 +56,18 @@ const Dashboard: React.FC = () => {
     handleApiRequest();
   }, []);
 
+
   return (
     <Container>
       <Header>
         <HeaderContent>
           <img src={logoImg} alt="2seed" />
-
+          <Links>
+            <Link to="/dashboard/form-user">Cadastrar Novo usuário</Link>
+          </Links>
+          <Links>
+            <Link to="/dashboard">Dashboard</Link>
+          </Links>
           <button type="button" onClick={signOut}>
             <FiPower />
           </button>
@@ -70,10 +85,11 @@ const Dashboard: React.FC = () => {
                     <strong>Nome: {e.name}</strong>
                     <strong>Email: {e.email}</strong>
                     <strong>CPF: {e.cpf}</strong>
+                    <strong>Cidade: {e.address.city}</strong>
                   </Table>
                   <Buttons>
                     <button type="button">
-                      <FiEdit2 />
+                      <Link to={`/dashboard/form-user/${e.id}`}><FiEdit2 /></Link>
                     </button>
                     <button
                       onClick={() => handleDeleteItem(e.id)}

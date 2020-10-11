@@ -67,11 +67,17 @@ p{
 
 export const Table = styled.div`
 
-span {
-  background-color: red;
+`;
+
+export const Links = styled.a`
+margin-left: 20px;
+a{
+text-decoration: none;
+color: #ff9000;
+font-weight:500;
+
+
 }
-
-
 `;
 
 export const UserCard = styled.div`

@@ -1,26 +1,15 @@
 {
   "users": [
     {
-      "id": "8f00c6b5-f6a0-4aef-96a2-5bed66bc3da",
-      "name": "nome",
+      "id": "24914927-8222-4c8e-b3e7-91f1c88250c6",
+      "name": "thiago medina",
       "cpf": "12345678911",
-      "email": "nome@email.com",
+      "email": "thiagomedina.tmd@gmail.com",
       "password": "1234",
       "address": {
-        "city": "rio"
+        "city": "Rio de Janeiro"
       },
-      "token": "fd08bb1d-8ded-42f8-aa7d-b5f09a58def"
-    },
-    {
-      "id": "8f00c6b5-fa0-4aef-96a2-5bed667bc3da",
-      "name": "nome",
-      "cpf": "12345678911",
-      "email": "nome@email.com",
-      "password": "1234",
-      "address": {
-        "city": "rio"
-      },
-      "token": "fd08bb1d-8ed-42f8-aa7d-b5f09a568def"
+      "token": "76fb493a-4ba8-4da9-b5cb-6d56d59218b0"
     }
   ]
 }
