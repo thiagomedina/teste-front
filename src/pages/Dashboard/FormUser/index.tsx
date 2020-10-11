@@ -21,6 +21,7 @@ import logoImg from "../../../assets/logo.png";
 import getValidationErrors from "../../../utils/getValidationErrors";
 import { useToast } from "../../../hooks/toast";
 import Input from "../../../components/Input";
+import { uuid } from "uuidv4";
 
 interface inputValuesDTO {
   id: string;
@@ -28,13 +29,11 @@ interface inputValuesDTO {
   cpf: string;
   email: string;
   password?: string;
-  address: {
-    zip: string;
-    street: string;
-    number: string;
-    district: string;
-    city: string;
-  };
+  zip: string;
+  street: string;
+  number: string;
+  district: string;
+  city: string;
 }
 
 const FormUser: React.FC = () => {
@@ -44,7 +43,7 @@ const FormUser: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -58,6 +57,7 @@ const FormUser: React.FC = () => {
   const handleSubmit = useCallback(async (data: inputValuesDTO) => {
     try {
       formRef.current?.setErrors({});
+      setLoading(true)
 
       const schema = Yup.object().shape({
         email: Yup.string()
@@ -76,18 +76,38 @@ const FormUser: React.FC = () => {
         abortEarly: false,
       });
 
-      await api.put(`/users/${id}`, {
-        name: data.name,
-        cpf: data.cpf,
-        email: data.email,
-        address: {
-          zip: data.address.zip,
-          street: data.address.street,
-          number: data.address.number,
-          district: data.address.district,
-          city: data.address.city,
-        },
-      });
+      if (id) {
+        console.log(data, id);
+        await api.put(`/users/${id}`, {
+          id: id,
+          name: data.name,
+          cpf: data.cpf,
+          email: data.email,
+          address: {
+            zip: data.zip,
+            street: data.street,
+            number: data.number,
+            district: data.district,
+            city: data.city,
+          },
+        });
+      }else{
+        await api.post("/users", {
+          id: uuid(),
+          name: data.name,
+          cpf: data.cpf,
+          email: data.email,
+          address: {
+            zip: data.zip,
+            street: data.street,
+            number: data.number,
+            district: data.district,
+            city: data.city,
+          },
+          token: uuid()
+        });
+      }
+     
 
       addToast({
         type: "success",
@@ -96,6 +116,7 @@ const FormUser: React.FC = () => {
       });
       history.push("/dashboard");
     } catch (err) {
+      console.log(err);
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
@@ -107,6 +128,8 @@ const FormUser: React.FC = () => {
           "Ocorreu um erro ao cadastrar o usuário, verifique servidor",
         title: "Erro no servidor",
       });
+    }finally{
+      setLoading(false)
     }
   }, []);
 
@@ -157,19 +180,19 @@ const FormUser: React.FC = () => {
               type="text"
               placeholder="nome"
               name="name"
-              value={name && name}
+              defaultValue={name}
             />
             <Input
               type="text"
               placeholder="cpf"
               name="cpf"
-              value={cpf && cpf}
+              defaultValue={cpf}
             />
             <Input
               type="text"
               placeholder="email"
               name="email"
-              value={email && email}
+              defaultValue={email}
             />
           </fieldset>
           <fieldset>
@@ -179,33 +202,33 @@ const FormUser: React.FC = () => {
               type="text"
               placeholder="cep"
               name="zip"
-              value={zip && zip}
+              defaultValue={zip}
             />
             <Input
               type="text"
               placeholder="rua"
               name="street"
-              value={street && street}
+              defaultValue={street}
             />
             <Input
               type="number"
               placeholder="numero"
               name="number"
-              value={number && number}
+              defaultValue={number}
             />
             <Input
               type="text"
               placeholder="bairro"
               name="district"
-              value={district && district}
+              defaultValue={district}
             />
             <Input
               type="text"
               placeholder="cidade"
               name="city"
-              value={city && city}
+              defaultValue={city}
             />
-            <Button type="submit">Salvar</Button>
+            <Button loading={loading} type="submit">Salvar</Button>
           </fieldset>
         </Form>
       </Container>

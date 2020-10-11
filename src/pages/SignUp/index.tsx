@@ -57,6 +57,10 @@ const SignUp: React.FC = () => {
           password: data.password,
           address: {
             city: data.city,
+            zip: '',
+            street:'',
+            number: '',
+            district: '',
           },
           token: uuid(),
         });
