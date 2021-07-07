@@ -2,8 +2,9 @@
   "name": "teste-cali",
   "version": "3.0.3",
   "author": "thiagomedina",
-  "license": "GNU GPL3",
+  "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server --open",
     "dev:base": "webpack-dev-server --config webpack.dev.js",
     "dev": "npm run dev:base -- --open",
     "build": "webpack --config webpack.prod.js",
